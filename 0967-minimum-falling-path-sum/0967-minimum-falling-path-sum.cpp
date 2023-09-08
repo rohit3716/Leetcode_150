@@ -1,17 +1,6 @@
 class Solution {
 public:
-    int solve( int i, int j, vector<vector<int>>& matrix, vector<vector<int>>& dp ) {
-        if( j < 0 || j >= matrix[0].size() ) return 1e8;
-        if( i == 0 ) return matrix[0][j];
-
-        if( dp[i][j] != -1 ) return dp[i][j];
-
-        int up = matrix[i][j] + solve( i-1, j, matrix, dp);
-        int leftD = matrix[i][j] + solve( i-1, j-1, matrix, dp);
-        int rightD = matrix[i][j] + solve( i-1, j+1, matrix, dp);
-
-        return dp[i][j] =  min( up, min( leftD, rightD));
-    }
+    
     int minFallingPathSum(vector<vector<int>>& matrix) {
         int n = matrix.size();
         int m = matrix[0].size();
