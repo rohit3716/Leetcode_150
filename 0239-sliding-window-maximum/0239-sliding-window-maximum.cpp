@@ -4,13 +4,19 @@
 class Solution {
 public:
     std::vector<int> maxSlidingWindow(std::vector<int>& nums, int k) {
+        
         std::vector<int> ans;
+
+        if(  k == 1 ){
+            return nums;
+        }
+        
         std::deque<int> q;
         int i = 0;
         int j = 0;
 
         while (j < nums.size()) {
-            while (!q.empty() && nums[j] >= nums[q.back()]) { 
+            while (!q.empty() && nums[j] >= nums[q.back()] ) { 
                 q.pop_back();
             }
             q.push_back(j);
