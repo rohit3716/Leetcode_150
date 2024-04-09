@@ -1,27 +1,22 @@
 class Solution {
 public:
     int countStudents(vector<int>& students, vector<int>& sandwiches) {
-        int circleStudentCount=0,squareStudentCount=0;
-        for(auto i:students) {
-            if(i==1)
-                squareStudentCount++;
-            else
-                circleStudentCount++;
+        int stu_0 = 0 , stu_1 = 0;
+        for( auto i:students ){
+            if( i == 0 ) stu_0++;
+            else stu_1++;
         }
-        for(auto i:sandwiches) {
-            if(i==1) {
-                if(squareStudentCount>0)
-                    squareStudentCount--;
-                else
-                    break;
-            }
-            if(i==0) {
-                if(circleStudentCount>0)
-                    circleStudentCount--;
-                else
-                    break;
+        
+        int n = sandwiches.size();
+        for( int i = 0; i < n; i++ ){
+            if( sandwiches[i] == 0 ){
+                if( stu_0 ) stu_0--;
+                else return n-i;
+            }else{
+                if( stu_1 ) stu_1--;
+                else return n-i;
             }
         }
-        return squareStudentCount+circleStudentCount;
+        return stu_0+stu_1;
     }
 };
