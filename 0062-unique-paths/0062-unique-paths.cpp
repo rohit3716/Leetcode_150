@@ -8,11 +8,13 @@ public:
 
         int up = solve(i-1, j, dp);
         int down = solve( i, j-1, dp);
-
+            cout<<i<<" "<<j<<endl;
         return dp[i][j] = up+down;
+
     }
     int uniquePaths(int m, int n) {
         vector<vector<int>> dp(m, vector<int>(n, -1));
+        
         return solve( m-1, n-1, dp);
     }
 };
